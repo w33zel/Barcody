@@ -25,7 +25,6 @@ struct ScannerView: UIViewControllerRepresentable {
             uiViewController.startNewCaptureSession()
         }
     }
-
 }
 
 extension ScannerView {
@@ -53,7 +52,6 @@ extension ScannerView {
         }
                 
         func stopCaptureSession() {
-            print("stopCaptureSession - ScannerView")
             view.model.captureSessionRunning = false
         }
     }

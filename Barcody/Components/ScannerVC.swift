@@ -48,7 +48,6 @@ final class ScannerVC: UIViewController {
     }
     
     func startNewCaptureSession() {
-        print("startNewCaptureSession")
         captureSession.startRunning()
     }
     
@@ -96,10 +95,7 @@ final class ScannerVC: UIViewController {
 extension ScannerVC: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         print(metadataObjects)
-        guard let object = metadataObjects.first else {
-//            scannerDelegate?.didSurface(error: .invalideScannedValue)
-            return
-        }
+        guard let object = metadataObjects.first else { return }
         
         switch object {
         case let machineReadable as AVMetadataMachineReadableCodeObject:
@@ -118,6 +114,5 @@ extension ScannerVC: AVCaptureMetadataOutputObjectsDelegate {
         
         scannerDelegate?.stopCaptureSession()
         captureSession.stopRunning()
-        print("Capturesession stopped")
     }
 }
